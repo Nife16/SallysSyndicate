@@ -1,0 +1,105 @@
+.filters-col {
+    width: 25%;
+    align-items: center;
+    margin-top: 50px;
+}
+
+.filter-link {
+    border: 2px solid silver;
+    border-radius: 10px;
+    justify-content: center;
+    width: 200px;
+    background: black;
+    color: silver;
+    padding: 5px;
+    margin: 10px 0px;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.reset {
+    margin-top: auto;
+    margin-bottom: 50px;
+    background-color: red;
+    color: black;
+}
+
+.filter-link:hover {
+    background-color: silver;
+    color: black;
+    border: 2px solid black;
+}
+
+.filter-link-flip {
+    border: 2px solid silver;
+    border-radius: 10px;
+    justify-content: center;
+    width: 200px;
+    background: purple;
+    color: black;
+    padding: 5px;
+    margin: 10px 0px;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.content-col {
+    height: 100%;
+    width: 75%;
+    /* align-items: center; */
+}
+
+.content-width {
+    width: 80%;
+    margin: 0 auto;
+}
+
+.whip-box {
+    width: 300px;
+    margin: 20px 10px;
+}
+
+.whip-box:hover {
+    border: 3px solid black;
+}
+
+.whip-image {
+    height: 200px;
+    width: 300px;
+}
+
+.whip-link {
+    text-decoration: none;
+    color: black;
+}
+
+.whip-box h3, p {
+    margin: 3px 5px;
+}
+
+.whip-box p {
+    font-weight: 600;
+    font-size: 15px;
+}
+
+.wrap {
+    flex-wrap: wrap;
+}
+
+.fields {
+    width: 30%;
+}
+.values {
+    width: 70%;
+}
+.values p {
+    justify-content: right;
+}
+
+.ellipsis {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    display: block;
+}
+

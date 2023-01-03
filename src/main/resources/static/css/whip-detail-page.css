@@ -1,0 +1,51 @@
+.content-center {
+    align-items: center;
+    justify-content: center;
+}
+
+.content-left {
+    justify-content: left; 
+    align-items: center;   
+}
+
+.whip-image {
+    height: 350px;
+    width: 600px;
+}
+
+.image-width {
+    width: 600px;
+}
+
+.detail-icon {
+    height: 50px;
+    width: 50px;
+    margin: 10px;
+}
+
+.icon-text {
+    margin: 5px;
+}
+
+.whip-details {
+    justify-content: center;
+    align-items: center;
+}
+
+.buy-button {
+    background-color: silver;
+    color: black;
+    border-radius: 5px;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    height: 60px;
+    font-size: 18px;
+    border: none;
+    font-weight: 900;
+}
+
+.buy-button:hover {
+    background-color: black;
+    color: silver;
+}

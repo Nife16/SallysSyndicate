@@ -1,5 +1,7 @@
 package com.mopar.service;
 
+import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,8 +23,12 @@ public class SappService {
         return sappRepo.save(sapp);
     }
     
-    public Sapp findByEmailAndPassword(Sapp sapp) {
-        return sappRepo.findByEmailAndPassword(sapp.getSappname(), sapp.getPassword());
+    public Sapp findByEmailAndPassword(Sapp sapp) throws Exception {
+        Sapp loggedInSapp = sappRepo.findByEmailAndPassword(sapp.getSappname(), sapp.getPassword());
+        if(loggedInSapp == null) {
+            throw new Exception("User not found");
+        }
+        return loggedInSapp;
     }
 
     public Sapp findSappById(Integer sappId) {
@@ -33,15 +39,33 @@ public class SappService {
         return sappRepo.findAll();
     }
 
-    public Sapp buyWhip(Integer sappId, Integer whipId) {
+    public Sapp buyWhip(Integer sappId, String vin) {
 
         Sapp loggedInSapp = findSappById(sappId);
 
-        Whip whip = whipService.findWhipById(whipId);
+        Whip whip = whipService.getWhipByVin(vin);
+
+        whip.setPurchaseDate(LocalDateTime.now());
 
         loggedInSapp.getGarage().add(whip);
 
         return save(loggedInSapp);
+    }
+
+    public List<Sapp> getSappPurchasers() {
+
+
+        List<Sapp> allUsers = findAllSapps();
+
+        List<Sapp> purchasers = new ArrayList<Sapp>();
+        for (Sapp sapp : allUsers) {
+            if(!sapp.getGarage().isEmpty()) {
+                purchasers.add(sapp);
+            }
+        }
+
+        return purchasers;
+
     }
     
 }

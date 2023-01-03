@@ -7,7 +7,7 @@ html, body {
 }
 /* https://i.pinimg.com/originals/d9/86/fc/d986fc07db1cf4e3a9d5a8dd460ca1b5.jpg */
 body {
-    background-image: url("https://i.pinimg.com/originals/35/a4/43/35a443321abb9319956d40ef2d024e13.jpg");
+    background-image: url("https://e1.pxfuel.com/desktop-wallpaper/975/920/desktop-wallpaper-cool-cars-mustang-cool-muscle-car-purple-cars.jpg");
     background-repeat: no-repeat;
     background-size: cover;
 }
@@ -98,13 +98,22 @@ input:focus {
     border: none;
 }
 
-.circleX {
-    background-color: red;
-    height: 50px;
-    width: 50px;
-    border-radius: 50px;
-    justify-content: center;
-    align-items: center;
-    color: white;
-    font-size: 35px;
+input[type="checkbox"] {
+    /* ...existing styles */
+    display: flex;
+    width: 20px;
+    height: 20px;
+}
+  
+input[type="checkbox"]::before {
+    content: "";
+    width: 1rem;
+    height: 1rem;
+    transform: scale(0);
+    transition: 120ms transform ease-in-out;
+    box-shadow: inset 1em 1em var(--form-control-color);
+}
+  
+input[type="checkbox"]:checked::before {
+    transform: scale(1);
 }

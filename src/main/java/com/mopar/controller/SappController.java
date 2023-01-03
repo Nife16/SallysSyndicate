@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.mopar.entity.Sapp;
 import com.mopar.service.SappService;
@@ -22,7 +23,6 @@ public class SappController {
     public String index(HttpSession session, Model model) {
         
         Integer loggedInSappId = (Integer) session.getAttribute("loggedInSappId");
-
         if(loggedInSappId != null) {
             Sapp loggedInSapp = sappService.findSappById(loggedInSappId);
             model.addAttribute("sapp", loggedInSapp);
@@ -55,7 +55,7 @@ public class SappController {
         }
         model.addAttribute("sapp", new Sapp());
 
-        return "signIn";
+        return "redirect:signIn";
 
     }
     
@@ -71,6 +71,12 @@ public class SappController {
         Sapp loggedInSapp = null;
         try {
             loggedInSapp = sappService.findByEmailAndPassword(sapp);
+
+            session.setAttribute("loggedInSappId", loggedInSapp.getId());
+
+            if(loggedInSapp.getRole().equals("ROLE_ADMIN")) {
+                return "redirect:admin-tool";
+            }
         } catch (Exception e) {
             System.out.println("error => " + e.getMessage());
             model.addAttribute("sapp", new Sapp());
@@ -83,12 +89,18 @@ public class SappController {
             return "signIn";
         }
 
-        session.setAttribute("loggedInSappId", loggedInSapp.getId());
-
         model.addAttribute("loggedInSapp", loggedInSapp);
 
-        return "home";
+        return "redirect:whips";
 
+    }
+
+    @GetMapping("/logout")
+    public ModelAndView logout(HttpSession session) {
+
+        session.removeAttribute("loggedInSapp");
+
+        return new ModelAndView("redirect:");
     }
 
 }

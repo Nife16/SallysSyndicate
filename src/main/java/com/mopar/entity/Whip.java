@@ -41,6 +41,10 @@ public class Whip {
     private LocalDateTime createDate;
     @Column(name = "mileage", nullable = false, columnDefinition = "integer default 0")
     private Integer mileage;
+    @Column(name = "slogan", nullable = true)
+    private String slogan;
+    @Column(name = "purchase_date", nullable = true)
+    private LocalDateTime purchaseDate;
 
     public Whip() {
     }
@@ -48,6 +52,19 @@ public class Whip {
     // Get the title name for the whips
     public String getTitleName() {
         return this.year + " " + this.model + " " + this.trim;
+    }
+
+    // Get pretty dates to show
+    public String getPrettyCreateDate() {
+
+            return this.createDate.getMonthValue() + "/" + this.createDate.getDayOfMonth() + "/" + this.createDate.getYear();
+
+    }
+
+    public String getPrettyPurchaseDate() {
+
+        return this.purchaseDate.getMonthValue() + "/" + this.purchaseDate.getDayOfMonth() + "/" + this.purchaseDate.getYear();
+
     }
 
     public Integer getId() {
@@ -158,7 +175,24 @@ public class Whip {
     public String toString() {
         return "Whip [id=" + id + ", year=" + year + ", make=" + make + ", model=" + model + ", trim=" + trim + ", vin="
                 + vin + ", price=" + price + ", cMpg=" + cMpg + ", hMpg=" + hMpg + ", image=" + image + ", engine="
-                + engine + ", createDate=" + createDate + ", mileage=" + mileage + "]";
+                + engine + ", createDate=" + createDate + ", mileage=" + mileage + ", slogan=" + slogan
+                + ", purchaseDate=" + purchaseDate + "]";
+    }
+
+    public String getSlogan() {
+        return slogan;
+    }
+
+    public void setSlogan(String slogan) {
+        this.slogan = slogan;
+    }
+
+    public LocalDateTime getPurchaseDate() {
+        return purchaseDate;
+    }
+
+    public void setPurchaseDate(LocalDateTime purchaseDate) {
+        this.purchaseDate = purchaseDate;
     }
 
 }

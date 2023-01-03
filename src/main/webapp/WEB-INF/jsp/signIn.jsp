@@ -6,22 +6,22 @@
 <head>
 	<title>Sallys Mopar Syndicate</title>
     <link rel="stylesheet" href="/css/flex.css">
-    <link rel="stylesheet" href="/css/signUp.css">
+    <link rel="stylesheet" href="/css/signIn.css">
     <link rel="stylesheet" href="/css/main.css">
 </head>
 <body class="flex-col">
-	<div class="flex-row header">  
-		<a class="header-links" href="/signUp">Sign Up</a>
-		<a class="header-links" href="/">Home</a>
-		<a class="header-links" href="/signIn">Sign In</a>
+	<div class="flex-row header">
+        <a class="header-links" href="/signUp">Sign Up</a>
+        <a class="header-links" href="/">Home</a>
+        <a class="header-links" href="/signIn">Sign In</a>
     </div>
 	<div class="flex-row main-content">
         <div class="out-of-the-box">
 			<div class="box">
 				<div class="box-content flex-col margin-center">
-					<h1 class="box-header">Syn Up for Syndicate entrance</h1>
-					<form:form modelAttribute="sapp" action="signUp" method="post">
-						<div class="flex-col">
+					<h1 class="box-header">Syn In</h1>
+					<form:form modelAttribute="sapp" action="signIn" method="post">
+						<div class="flex-col content-center">
 							<div class="flex-row">
 								<div class="box-input">
 									<form:input path="sappname" placeholder="Username" type="text" />
@@ -40,5 +40,4 @@
 		</div>
     </div>
 </body>
-
 </html>

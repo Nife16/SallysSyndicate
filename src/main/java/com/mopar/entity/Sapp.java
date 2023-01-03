@@ -23,22 +23,16 @@ public class Sapp {
     private String sappname;
     @Column(name = "password", nullable = false)
     private String password;
-    @Column(name = "isAdmin", nullable = false, columnDefinition = "boolean default 0")
-    private Boolean isAdmin;
+    @Column(name = "role", nullable = false)
+    private String role = "ROLE_USER";
+    @Column(name = "roles", nullable = false)
+    private String roles = "ROLE_USER";
 
     @OneToMany
     @JoinColumn(name="sapp_id", referencedColumnName = "id")
     private List<Whip> garage;
     
     public Sapp() {
-    }
-    
-    public Boolean getIsAdmin() {
-        return isAdmin;
-    }
-
-    public void setIsAdmin(Boolean isAdmin) {
-        this.isAdmin = isAdmin;
     }
 
     public String getSappname() {
@@ -67,6 +61,14 @@ public class Sapp {
 
     public void setGarage(List<Whip> garage) {
         this.garage = garage;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
     }
 
     @Override
